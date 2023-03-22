@@ -81,6 +81,9 @@ namespace RecipeBox.Controllers
 // This one works, do not delete
     public ActionResult Details(int id)
     {
+      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ViewBag.CurrentUser = userId;
+
       Recipe thisRecipe = _db.Recipes
             .Include(recipe => recipe.JoinEntities)
             .ThenInclude(join => join.Tag)

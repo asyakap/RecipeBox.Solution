@@ -27,6 +27,7 @@ namespace RecipeBox.Controllers
       //Recipe logic
       string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      ViewBag.CurrentUser = userId;
       if (currentUser != null)
       {
         Recipe[] recipes = _db.Recipes

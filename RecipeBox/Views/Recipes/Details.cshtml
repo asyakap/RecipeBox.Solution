@@ -2,7 +2,6 @@
   Layout = "_Layout";
 }
 
-@using System.Security.Claims
 @using RecipeBox.Models
 @model RecipeBox.Models.Recipe
 
@@ -40,10 +39,8 @@ else
   </ul>
 }
 
+@if (@Model.UserId.Equals(@ViewBag.CurrentUser))
+{
 <p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId }) | @Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId }) | @Html.ActionLink("Add a Tag", "AddTag", new {
   id = Model.RecipeId })</p>
-
-@* @if (@Model.User.Id.Equals(@ViewBag.CurrentUser))
-{
-  <p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId }) | @Html.ActionLink("Add a Tag", "AddTag", new { id = Model.RecipeId }) | @Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId })</p>
-} *@
+}
